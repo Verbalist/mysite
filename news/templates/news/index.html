@@ -1,6 +1,8 @@
 {% extends 'base/base.html'%}
 {% load staticfiles %}
 
+{% block container%}
+<h1>Index news</h1>
 <link rel="stylesheet" type="text/css" href="{% static 'news/style.css' %}" />{% if news_list %}
     <ul>
     {% for news in news_list %}
@@ -11,4 +13,5 @@
     <p>No polls are available.</p>
 {% endif %}
 
-<h1>Index news</h1>
+
+{%endblock%}

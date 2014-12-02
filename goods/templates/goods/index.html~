@@ -1,10 +1,13 @@
 {% extends "base/base.html" %}
 {% load staticfiles %}
 
+{% block scripts %}
+	<srcipt type="text/javascript" src='{% static "goods/shop.js" %}'></script-->
+{% endblock %}
+
 {% block content %}
-	<!--link rel="stylesheet" type="text/css" href="{% static 'goods/style.css' %}" /-->
-	<srcipt src="{% static 'goods/shop.js'%}"></script>
-	<h1>Index</h1>
+	
+	<h1 id="test">Index</h1>
 	
 	{% if goods_list %}
 		<ul>

@@ -1,2 +1,6 @@
-alert("lol2");
-$("h1").html("<h1>lol</h1>")
+//$("h1").css({'color':'red'})
+alert("1");
+var a = document.getElementById("test");
+a.innerHtml("<h1>lol2</h1>");
+$("h1").append("<h1>lol</h1>");
+alert(a);

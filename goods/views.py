@@ -5,7 +5,6 @@ from goods.models import Goods
 
 class IndexView(generic.ListView):
 	template_name = 'goods/index.html'
-	#context_object_name = 'latest_contact_list'
 
 	def get_queryset(self):
 		"""Return the last five published questions."""
