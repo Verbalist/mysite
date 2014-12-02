@@ -1,0 +1,135 @@
+# -*- coding: utf-8 -*-
+from __future__ import unicode_literals
+
+from django.db import models, migrations
+from django.utils.timezone import utc
+import ckeditor.fields
+import datetime
+
+
+class Migration(migrations.Migration):
+
+    dependencies = [
+        ('workshops', '0002_auto_20141129_1445'),
+    ]
+
+    operations = [
+        migrations.CreateModel(
+            name='Address',
+            fields=[
+                ('id', models.AutoField(auto_created=True, primary_key=True, verbose_name='ID', serialize=False)),
+                ('name', models.CharField(max_length=100, verbose_name='Адреса')),
+            ],
+            options={
+            },
+            bases=(models.Model,),
+        ),
+        migrations.AddField(
+            model_name='workshops',
+            name='pub_date',
+            field=models.DateTimeField(verbose_name='Дата створення', default=datetime.datetime(2014, 11, 30, 16, 27, 52, 380378, tzinfo=utc)),
+            preserve_default=True,
+        ),
+        migrations.AlterField(
+            model_name='tools',
+            name='name',
+            field=models.CharField(max_length=100, verbose_name='Назва'),
+            preserve_default=True,
+        ),
+        migrations.AlterField(
+            model_name='workshops',
+            name='address',
+            field=models.ForeignKey(to='workshops.Address', verbose_name='Адреса'),
+            preserve_default=True,
+        ),
+        migrations.AlterField(
+            model_name='workshops',
+            name='age',
+            field=models.CharField(choices=[('C', 'Для детей'), ('T', 'Для подростков'), ('M', 'Для молодых'), ('H', 'Для среднего возраста'), ('O', 'Для пожилых')], max_length=1, verbose_name='Вік', default='M'),
+            preserve_default=True,
+        ),
+        migrations.AlterField(
+            model_name='workshops',
+            name='buys',
+            field=models.PositiveIntegerField(verbose_name='к-ть покупок', default=0),
+            preserve_default=True,
+        ),
+        migrations.AlterField(
+            model_name='workshops',
+            name='date',
+            field=models.DateTimeField(verbose_name='Дата заходу', default=datetime.datetime(2014, 11, 30, 16, 27, 52, 380352, tzinfo=utc)),
+            preserve_default=True,
+        ),
+        migrations.AlterField(
+            model_name='workshops',
+            name='description',
+            field=ckeditor.fields.RichTextField(verbose_name='Опис'),
+            preserve_default=True,
+        ),
+        migrations.AlterField(
+            model_name='workshops',
+            name='good',
+            field=models.ForeignKey(to='goods.Goods', verbose_name='Товар'),
+            preserve_default=True,
+        ),
+        migrations.AlterField(
+            model_name='workshops',
+            name='level',
+            field=models.CharField(choices=[('L', 'Начинающий'), ('M', 'опытный'), ('H', 'продвинутый')], max_length=1, verbose_name='Рівень', default='L'),
+            preserve_default=True,
+        ),
+        migrations.AlterField(
+            model_name='workshops',
+            name='name',
+            field=models.CharField(max_length=100, verbose_name='Назва'),
+            preserve_default=True,
+        ),
+        migrations.AlterField(
+            model_name='workshops',
+            name='price',
+            field=models.PositiveSmallIntegerField(verbose_name='Ціна'),
+            preserve_default=True,
+        ),
+       migrations.AddField(
+            model_name='workshops',
+            name='producer',
+            field=models.ManyToManyField(verbose_name='Ведучі', to='contacts.Contacts'),
+            preserve_default=True,
+        ),
+        migrations.AlterField(
+            model_name='workshops',
+            name='time',
+            field=models.PositiveSmallIntegerField(verbose_name='Тривалість'),
+            preserve_default=True,
+        ),
+        migrations.AlterField(
+            model_name='workshops',
+            name='tool',
+            field=models.ForeignKey(to='workshops.Tools', verbose_name='Інструменти'),
+            preserve_default=True,
+        ),
+        migrations.AlterField(
+            model_name='workshops',
+            name='transfer',
+            field=models.BooleanField(verbose_name='Чи виїздний?'),
+            preserve_default=True,
+        ),
+        migrations.AlterField(
+            model_name='workshops',
+            name='visites',
+            field=models.PositiveIntegerField(verbose_name='Відвідало', default=0),
+            preserve_default=True,
+        ),
+        migrations.AlterField(
+            model_name='workshops',
+            name='volume',
+            field=models.PositiveSmallIntegerField(verbose_name='Кількість людей'),
+            preserve_default=True,
+        ),
+        migrations.AlterField(
+            model_name='workshops',
+            name='vote',
+            field=models.CharField(max_length=100, verbose_name='Відгуки'),
+            preserve_default=True,
+        ),
+    ]

@@ -1,0 +1,40 @@
+# -*- coding: utf-8 -*-
+from __future__ import unicode_literals
+
+from django.db import models, migrations
+from django.utils.timezone import utc
+import datetime
+
+
+class Migration(migrations.Migration):
+
+    dependencies = [
+        ('workshops', '0016_auto_20141130_2042'),
+    ]
+
+    operations = [
+        migrations.AlterModelOptions(
+            name='tools',
+            options={'verbose_name': 'Інструмент', 'verbose_name_plural': 'Інструменти'},
+        ),
+        migrations.AlterModelOptions(
+            name='workshops',
+            options={'verbose_name': 'Майстер клас', 'verbose_name_plural': 'Майстер клас'},
+        ),
+        migrations.RemoveField(
+            model_name='workshops',
+            name='vote',
+        ),
+        migrations.AlterField(
+            model_name='workshops',
+            name='date',
+            field=models.DateTimeField(verbose_name='Дата заходу', default=datetime.datetime(2014, 11, 30, 21, 15, 10, 703779, tzinfo=utc)),
+            preserve_default=True,
+        ),
+        migrations.AlterField(
+            model_name='workshops',
+            name='pub_date',
+            field=models.DateTimeField(verbose_name='Дата створення', default=datetime.datetime(2014, 11, 30, 21, 15, 10, 703807, tzinfo=utc)),
+            preserve_default=True,
+        ),
+    ]

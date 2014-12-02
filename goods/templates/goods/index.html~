@@ -1,0 +1,17 @@
+{% extends "base/base.html" %}
+{% load staticfiles %}
+
+{% block content %}
+	<!--link rel="stylesheet" type="text/css" href="{% static 'goods/style.css' %}" /-->
+	<srcipt src="{% static 'goods/shop.js'%}"></script>
+	<h1>Index</h1>
+	
+	{% if goods_list %}
+		<ul>
+		{% for goods in goods_list %}
+		    <li><a href="{% url 'goods:detail' goods.id %}">{{ goods.name }}</a></li>
+		{% endfor %}
+		</ul>
+
+	{% endif %}
+{% endblock %}

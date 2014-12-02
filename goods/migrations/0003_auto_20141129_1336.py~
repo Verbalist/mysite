@@ -1,0 +1,26 @@
+# -*- coding: utf-8 -*-
+from __future__ import unicode_literals
+
+from django.db import models, migrations
+
+
+class Migration(migrations.Migration):
+
+    dependencies = [
+        ('goods', '0002_auto_20141129_1224'),
+    ]
+
+    operations = [
+        migrations.AddField(
+            model_name='goods',
+            name='buys',
+            field=models.PositiveIntegerField(default='15:35'),
+            preserve_default=False,
+        ),
+        migrations.AddField(
+            model_name='goods',
+            name='visites',
+            field=models.PositiveIntegerField(default='15:36'),
+            preserve_default=False,
+        ),
+    ]

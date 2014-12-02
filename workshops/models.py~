@@ -1,0 +1,76 @@
+import datetime
+from django.db import models
+from django.utils import timezone
+from goods.models import Goods
+from contacts.models import Contacts
+from ckeditor.fields import RichTextField
+
+class Tools(models.Model):
+	name = models.CharField(max_length=100,verbose_name="Назва")
+	
+	class Meta:
+		verbose_name = "Інструмент"
+		verbose_name_plural = "Інструменти"
+
+	def __str__(self):
+		return self.name
+
+class Workshops(models.Model):
+	name = models.CharField(max_length=100,verbose_name="Назва")
+	price = models.PositiveSmallIntegerField(verbose_name="Ціна")
+	good = models.ForeignKey(Goods,verbose_name="Товар")
+	date = models.DateTimeField(verbose_name="Дата заходу", default = timezone.now())
+	pub_date = models.DateTimeField(verbose_name="Дата створення", default = timezone.now())# date published
+	tool = models.ForeignKey(Tools,verbose_name="Інструменти")
+	address = models.CharField(max_length=100,verbose_name="Адреса")
+	description = RichTextField(verbose_name="Опис")
+	time = models.PositiveSmallIntegerField(verbose_name="Тривалість")
+	visites = models.PositiveIntegerField(verbose_name="Відвідало",default=0)
+	producer = models.ManyToManyField(Contacts,verbose_name="Ведучі") 
+	age = models.CharField(max_length=1,choices=Goods.AGES_CHOICES,default=Goods.MID,verbose_name="Вік")
+	
+	LOW = 'L'
+	MID = 'M'
+	HIGH = 'H'
+	LEVEL_CHOICES = ((LOW, 'Начинающий'), (MID, 'опытный'), (HIGH, 'продвинутый'))
+	level = models.CharField(max_length=1,choices=LEVEL_CHOICES,default=LOW,verbose_name="Рівень")
+	volume = models.PositiveSmallIntegerField(verbose_name="Кількість людей")
+	transfer = models.BooleanField(verbose_name="Чи виїздний?")
+	buys = models.PositiveIntegerField(verbose_name="к-ть покупок",default=0)
+
+	class Meta:
+		verbose_name = "Майстер клас"
+		verbose_name_plural = "Майстер клас"
+	
+
+	def __str__(self):
+		return self.name +" : " + str(str(self.date).split(" ")[0])
+
+	def is_date(self):
+		return self.date >= timezone.now()
+
+	def visitesUP(self):
+		self.visites += 1
+
+	def buysUp(self):
+		self.buys += 1
+
+	def myCopy(self):
+		return self
+
+	def save(self):
+		self.pub_date = timezone.now()
+		super(Workshops, self).save()
+
+class Vote():
+	workshop = models.ForeignKey(Goods,verbose_name="Товар")
+	vote = RichTextField(verbose_name="Відгук")
+	pub_date = models.DateTimeField(verbose_name="Дата відгуку", default = timezone.now())
+
+	class Meta:
+		verbose_name = "Відгук"
+		verbose_name_plural = "Відгуки"
+
+	def __str__(self):
+		return str(self.workshop)
+

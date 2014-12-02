@@ -1,0 +1,13 @@
+{% load staticfiles %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'goods/style.css' %}" />{% if goods_list %}
+    <ul>
+    {% for goods in goods_list %}
+        <li><a href="{% url 'goods:detail' goods.id %}">{{ goods.name }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No polls are available.</p>
+{% endif %}
+
+<h1>Index Goods</h1>

@@ -1,0 +1,52 @@
+# -*- coding: utf-8 -*-
+from __future__ import unicode_literals
+
+from django.db import models, migrations
+
+
+class Migration(migrations.Migration):
+
+    dependencies = [
+        ('goods', '0002_auto_20141129_1224'),
+    ]
+
+    operations = [
+        migrations.CreateModel(
+            name='Tools',
+            fields=[
+                ('id', models.AutoField(serialize=False, verbose_name='ID', auto_created=True, primary_key=True)),
+                ('name', models.CharField(max_length=100)),
+            ],
+            options={
+            },
+            bases=(models.Model,),
+        ),
+        migrations.CreateModel(
+            name='Workshops',
+            fields=[
+                ('id', models.AutoField(serialize=False, verbose_name='ID', auto_created=True, primary_key=True)),
+                ('name', models.CharField(max_length=100)),
+                ('price', models.PositiveSmallIntegerField()),
+                ('date', models.DateTimeField(verbose_name='date workshop')),
+                ('address', models.CharField(max_length=200)),
+                ('description', models.CharField(max_length=1000)),
+                ('time', models.PositiveSmallIntegerField()),
+                ('vote', models.CharField(max_length=1000)),
+                ('age', models.CharField(choices=[('C', 'Для детей'), ('T', 'Для подростков'), ('M', 'Для молодых'), ('H', 'Для среднего возраста'), ('O', 'Для пожилых')], max_length=1, default='M')),
+                ('level', models.CharField(choices=[('L', 'Начинающий'), ('M', 'опытный'), ('H', 'продвинутый')], max_length=1, default='L')),
+                ('volume', models.PositiveSmallIntegerField()),
+                ('transfer', models.BooleanField()),
+                ('good', models.ForeignKey(to='goods.Goods')),
+                ('tool', models.ForeignKey(to='workshops.Tools')),
+            ],
+            options={
+            },
+            bases=(models.Model,),
+        ),
+		migrations.AddField(
+            model_name='workshops',
+            name='producer',
+            field=models.ManyToManyField(verbose_name='Ведучі', to='contacts.Contacts'),
+            preserve_default=True,
+        ),
+    ]

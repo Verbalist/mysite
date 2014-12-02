@@ -1,0 +1,9 @@
+{% load staticfiles %}
+<h1>Detail news</h1>
+<h1>{{ news.name }}</h1>
+<h2>{{ news.description }}</h2>
+<h2>{{ news.pub_date }}</h2>
+<img src="{% static news.avatar.url %}" >
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+

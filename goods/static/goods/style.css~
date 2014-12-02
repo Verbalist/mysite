@@ -1,0 +1,5 @@
+a:inherit {
+	color:red;
+	font-size:15pt;
+	
+}

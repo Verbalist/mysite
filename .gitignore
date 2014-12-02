@@ -1,0 +1,5 @@
+*.sql
+*.psd
+/static/media/*
+/ckeditor
+/static/ckeditor

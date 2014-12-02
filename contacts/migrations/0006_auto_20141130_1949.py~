@@ -1,0 +1,32 @@
+# -*- coding: utf-8 -*-
+from __future__ import unicode_literals
+
+from django.db import models, migrations
+
+
+class Migration(migrations.Migration):
+
+    dependencies = [
+        ('contacts', '0005_auto_20141130_1940'),
+    ]
+
+    operations = [
+        migrations.AlterField(
+            model_name='contacts',
+            name='address',
+            field=models.CharField(blank=True, max_length=100, verbose_name='Адреса'),
+            preserve_default=True,
+        ),
+        migrations.AlterField(
+            model_name='contacts',
+            name='socialNetwork',
+            field=models.URLField(help_text='Декілька через /', verbose_name='Cоцмережа'),
+            preserve_default=True,
+        ),
+        migrations.AlterField(
+            model_name='contacts',
+            name='tel',
+            field=models.CharField(blank=True, max_length=20, verbose_name='Телефон'),
+            preserve_default=True,
+        ),
+    ]

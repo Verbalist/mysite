@@ -1,0 +1,13 @@
+{% load staticfiles %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'workshops/style.css' %}" />{% if workshops_list %}
+    <ul>
+    {% for workshops in workshops_list %}
+        <li><a href="{% url 'workshops:detail' workshops.id %}">{{ workshops.name }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No polls are available.</p>
+{% endif %}
+
+<h1>Index workshops</h1>

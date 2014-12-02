@@ -1,0 +1,9 @@
+from django.contrib import admin
+from books.models import Books
+
+class BooksAdmin(admin.ModelAdmin):
+	exclude = ('pub_date',)
+	list_display = ('pub_date','price','technic','telephone','email')
+	ordering = ['pub_date']
+
+admin.site.register(Books, BooksAdmin)

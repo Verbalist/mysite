@@ -1,0 +1,115 @@
+# -*- coding: utf-8 -*-
+from __future__ import unicode_literals
+
+from django.db import models, migrations
+
+
+class Migration(migrations.Migration):
+
+    dependencies = [
+        ('goods', '0001_initial'),
+    ]
+
+    operations = [
+        migrations.CreateModel(
+            name='Bases',
+            fields=[
+                ('id', models.AutoField(serialize=False, verbose_name='ID', auto_created=True, primary_key=True)),
+                ('name', models.CharField(max_length=100)),
+                ('size', models.CharField(max_length=50)),
+            ],
+            options={
+            },
+            bases=(models.Model,),
+        ),
+        migrations.CreateModel(
+            name='Colors',
+            fields=[
+                ('id', models.AutoField(serialize=False, verbose_name='ID', auto_created=True, primary_key=True)),
+                ('name', models.CharField(max_length=100)),
+            ],
+            options={
+            },
+            bases=(models.Model,),
+        ),
+        migrations.CreateModel(
+            name='Goods',
+            fields=[
+                ('id', models.AutoField(serialize=False, verbose_name='ID', auto_created=True, primary_key=True)),
+                ('name', models.CharField(max_length=100)),
+                ('price', models.PositiveSmallIntegerField()),
+                ('description', models.CharField(max_length=1000)),
+                ('age', models.CharField(choices=[('C', 'Для детей'), ('T', 'Для подростков'), ('M', 'Для молодых'), ('H', 'Для среднего возраста'), ('O', 'Для пожилых')], max_length=1, default='M')),
+                ('consumer', models.CharField(choices=[('M', 'Мужчине'), ('W', 'Женщине'), ('U', 'Унисекс')], max_length=1, default='U')),
+                ('pub_date', models.DateTimeField(verbose_name='date published')),
+                ('count', models.SmallIntegerField()),
+                ('base', models.ForeignKey(to='goods.Bases')),
+                ('color', models.ForeignKey(to='goods.Colors')),
+            ],
+            options={
+            },
+            bases=(models.Model,),
+        ),
+        migrations.CreateModel(
+            name='Holidays',
+            fields=[
+                ('id', models.AutoField(serialize=False, verbose_name='ID', auto_created=True, primary_key=True)),
+                ('name', models.CharField(max_length=100)),
+                ('date', models.CharField(max_length=100)),
+            ],
+            options={
+            },
+            bases=(models.Model,),
+        ),
+        migrations.CreateModel(
+            name='Materials',
+            fields=[
+                ('id', models.AutoField(serialize=False, verbose_name='ID', auto_created=True, primary_key=True)),
+                ('name', models.CharField(max_length=100)),
+            ],
+            options={
+            },
+            bases=(models.Model,),
+        ),
+        migrations.CreateModel(
+            name='Styles',
+            fields=[
+                ('id', models.AutoField(serialize=False, verbose_name='ID', auto_created=True, primary_key=True)),
+                ('name', models.CharField(max_length=100)),
+            ],
+            options={
+            },
+            bases=(models.Model,),
+        ),
+        migrations.CreateModel(
+            name='Technics',
+            fields=[
+                ('id', models.AutoField(serialize=False, verbose_name='ID', auto_created=True, primary_key=True)),
+                ('name', models.CharField(max_length=100)),
+            ],
+            options={
+            },
+            bases=(models.Model,),
+        ),
+        migrations.DeleteModel(
+            name='Good',
+        ),
+        migrations.AddField(
+            model_name='goods',
+            name='holiday',
+            field=models.ForeignKey(to='goods.Holidays'),
+            preserve_default=True,
+        ),
+        migrations.AddField(
+            model_name='goods',
+            name='style',
+            field=models.ForeignKey(to='goods.Styles'),
+            preserve_default=True,
+        ),
+        migrations.AddField(
+            model_name='goods',
+            name='technic',
+            field=models.ForeignKey(to='goods.Technics'),
+            preserve_default=True,
+        ),
+    ]

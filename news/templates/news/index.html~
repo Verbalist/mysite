@@ -1,0 +1,14 @@
+{% extends 'base/base.html'%}
+{% load staticfiles %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'news/style.css' %}" />{% if news_list %}
+    <ul>
+    {% for news in news_list %}
+        <li><a href="{% url 'news:detail' news.id %}">{{ news.name }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No polls are available.</p>
+{% endif %}
+
+<h1>Index news</h1>

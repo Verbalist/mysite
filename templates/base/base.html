@@ -1,0 +1,38 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="{% static "base/style.css"%}" />
+	<script src="{% static "base/jquery-2.1.1.min.js"%}"></script>
+	<script src="{% static "goods/shop.js" %}"></script>
+    <title>{% block title %}My amazing site{% endblock %}</title>
+</head>
+
+<body>
+	<!-- ---------------------SIDEBAR---------------->
+    <div id="sidebar">
+        {% block sidebar %}
+		<div>
+			<h1 align=center>Header block</h1>
+		</div>
+        <div align=center>
+            <a href="/">Home </a>
+            <a href="/blog/"> Blog </a>
+		</div>
+        {% endblock %}
+    </div>
+	<!-- ---------------------COONTENT---------------->
+    <div id="content">
+        {% block content %}{% endblock %}
+    </div>
+	<!-- ---------------------fOOTER---------------->
+	<div id="footer">
+    {% block footer %}
+		<h1 align=center>Footer Block</h1>
+
+
+	{% endblock %}
+    </div>
+
+</body>
+</html>
