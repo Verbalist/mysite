@@ -1,0 +1,8 @@
+{%extends 'base/base.html'%}
+{% load static %}
+{% block css%}{%static 'base/css/man_base.css''%}{% endblock %}
+{% block content %}
+	<div id="choice" class="col-md-2">{% block choice %}{%endblock%}</div>
+	<div id="show" class="col-md-10">{% block show %}{%endblock%}</div>
+
+{% endblock %}

@@ -1,0 +1,11 @@
+a {
+	color:green;
+	font-size:15pt;
+}
+h1 {
+	color:white;
+	font-family: Lato-HeavyItalic;
+}
+body {
+	background:url("/base/images/fon.png");
+}

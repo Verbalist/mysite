@@ -1,0 +1,12 @@
+{% extends 'base/base.html'%}
+{% load staticfiles %}
+
+{% block content %}
+	<div style="margin-left:15%;">
+			<img src="{% static news.avatar.url %}" height=200 style="float:left;padding-right:40px">
+			<h1>{{ news.name }}</h1>
+			<h2>Мастер класс {{ news.workshop.name}}</h2>			
+			{{news.description|safe}}
+			
+	</div>
+{%endblock%}

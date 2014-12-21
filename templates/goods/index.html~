@@ -1,0 +1,19 @@
+{% extends "base/man_base.html" %}
+{% load static %}
+{% block scripts %}
+	{% static 'goods/shop.js' %}
+{% endblock %}
+{% block menu%}
+	{% static 'goods/menu.js' %}
+{% endblock %}
+{% block choice%}
+	<div id='filters'><h4>фильтры:</h4></div><br>
+	<h4 onclick="menu(this,'goods.technics')" class='empty' id="technics">Техника</h4>
+	<h4 onclick="menu(this,'goods.bases')" class='empty' id="bases">Основа</h4>
+	<h4 onclick="menu(this,'goods.colors')" class='empty' id="colors">Цвет</h4>
+	<!--<h4 onclick="menu(this,'goods.materials')" class='empty' id="materials">Материалы</h4-->
+	<h4 onclick="menu(this,'goods.holidays')" class='empty' id="holidays">Праздники</h4>
+	<h4 onclick="menu(this,'goods.styles')" class='empty' id="styles">Стиль</h4>
+{% endblock %}
+{% block show %}
+{% endblock %}

@@ -1,0 +1,17 @@
+body {
+	background-attachment: fixed;
+	background-size: 100% 100%;
+}
+a {
+	color:green;
+	font-size:15pt;
+}
+h1 {
+	color:white;
+	font-family: Lato-LightItalic;
+	margin:0px;
+}
+my_menu {
+	padding-left: 20px;
+}
+

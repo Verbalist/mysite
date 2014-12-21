@@ -5,11 +5,10 @@ from news.models import News
 
 class IndexView(generic.ListView):
 	template_name = 'news/index.html'
-	#context_object_name = 'latest_contact_list'
 
 	def get_queryset(self):
 		"""Return the last five published questions."""
-		return News.objects.order_by('name')[:5]
+		return News.objects.order_by('-pub_date')[:5]
 
 
 class DetailView(generic.DetailView):

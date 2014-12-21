@@ -21,4 +21,4 @@ class News(models.Model):
 
 	def save(self):
 		self.pub_date = timezone.now()
-		super(Books, self).save()
+		super(News, self).save()

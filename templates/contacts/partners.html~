@@ -1,0 +1,17 @@
+{% extends "base/base.html" %}
+{% load static %}
+{% block content %}
+<h1 id="header" align="center">{% block header %}Наши партнери{% endblock %}</h1>
+
+	<table style="margin-left:25%;">
+	{% for contact in contacts_list %}
+		{% if contact.isPartner %}
+			<tr><td style="padding-bottom:20px;">
+				<img src="{% static contact.avatar.url %}" height=100 style="padding-right:40px">
+			</td><td style="padding-bottom:20px;">
+				{{ contact.name }}
+			</td></tr>
+		{% endif %}
+	{% endfor %}
+	</table>
+{% endblock %}

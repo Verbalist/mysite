@@ -1,0 +1,19 @@
+{% extends 'base/base.html'%}
+{% load staticfiles %}
+
+{% block content %}
+	<div style="margin-left:15%;margin-top:40px;">
+			<img src="{% static goods.avatar.url %}" height=400 style="float:left;padding-right:40px">
+			<h1>{{ goods.name }}</h1>
+			<h2>Цена: {{ goods.price }}</h2>
+			<h2>Количество: {{ goods.count }}</h2>
+			<h2>Основа: {{ goods.base }}</h2>
+			<h2>Материалы:</h2>
+			{% for material in goods.material.values %}
+				<h4>{{ material.name}}</h4>
+			{% endfor %}	
+			<h2>Описание:</h2>		
+			{{goods.description|safe}}
+			
+	</div>
+{%endblock%}

@@ -1,40 +1,62 @@
-{% load staticfiles %}
-<!DOCTYPE html>	
-<html lang="en">
+{% load static %}
+<!DOCTYPE html>
+<html lang="{{ LANGUAGE_CODE|default:"en-us" }}">
 <head>
+	<title>{% block title %}Арт мастерская{% endblock %}</title>
+	<style>
+		@font-face {
+			font-family: Lato-HeavyItalic;
+			src: url("{% static "base/font/Lato-HeavyItalic.ttf" %}");
+		}
+		@font-face {
+			font-family: Lato-LightItalic;
+			src: url("{% static "base/font/Lato-LightItalic.ttf" %}");
+		}
+		body {
+			background:url({% static "base/images/fon.png"%}) no-repeat;
+		}
 
-    <link rel="stylesheet" href="{% static "base/style.css"%}" />
-	<script type="text/javascript"  src="{% static "base/jquery-2.1.1.min.js"%}"></script>
-	{% block scripts %}{% endblock %}
-	
-    <title>{% block title %}My amazing site{% endblock %}</title>
+	</style>
+	<link rel="stylesheet" href="{% static "base/dist/css/bootstrap.css" %}" />
+	<link rel="stylesheet" href="{% static "base/css/animate.css" %}" />
+    <link rel="stylesheet" href="{% static "base/css/style.css" %}" />
+	<link rel="stylesheet" href="{% block css %}{% endblock %}" />
+	<script type="text/javascript"  src="{% static "base/js/jquery-2.1.1.min.js" %}"></script>
+	<script type="text/javascript"  src="{% block scripts %}{% endblock %}"></script>
+	<script type="text/javascript"  src="{% block menu %}{% endblock %}"></script>
 </head>
-
 <body>
 	
-	<!-- ---------------------SIDEBAR-------------- -->
+	<!-- _____________________SIDEBAR___________________ -->
     <div id="sidebar">
         {% block sidebar %}
-		<div>
-			<h1 align=center>Header block</h1>
-		</div>
-        <div align=center>
-            <a href="/">Home </a>
-            <a href="/blog/"> Blog </a>
-		</div>
+			<h1 align=center>Арт-студия</h1>
+			<h1 align=center>Галины Мехед</h1>
+			<div align=center><img src="{% static "base/images/venzel.png"%}" height ="30"><br></div>
+			<div><img src="{% static "base/images/left_icon.png" %}" height="100" style="float:left	">
+			<div class="masthead" style="padding-top:15px">
+		        <div role="navigation">
+		          <ul class="nav nav-justified">
+		            <li class="active"><a href="/news">Новости</a></li>
+		            <li><a href="/goods">Магазин</a></li>
+		            <li><a href="/workshops">Мастер-классы</a></li>
+					<li><a href="/contacts">Наши мастера</a></li>
+           			<li><a href="/contacts/partners">Наши партнеры</a></li>
+           			<li><a href="/contacts/about">Контакты</a></li>
+          		</ul>
+        	</div>
+			</div>
         {% endblock %}
     </div>
-	<!-- ---------------------COONTENT--------------  -->
+	<!-- ___________________COONTENT___________________  -->
     <div id="content">
         {% block content %}{% endblock %}
     </div>
-	<!-- ---------------------fOOTER-------------- -->
+	<!-- ___________________FOOTER___________________ -->
 	<div id="footer">
-    {% block footer %}
-		<h1 align=center>Footer Block</h1>
-
-
-	{% endblock %}
+    	{% block footer %}
+			<div align=center><img src="{% static "base/images/venzel.png"%}" height="100"></div>
+		{% endblock %}
     </div>
 
 </body>

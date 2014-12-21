@@ -13,7 +13,7 @@ class Bases(models.Model):
 		verbose_name_plural="Основи"
 
 	def __str__(self):
-		return self.name +" : " + self.size
+		return self.name +", Размер :" + self.size + " см"
 
 class Technics(models.Model):
 	name = models.CharField(max_length=100,verbose_name="Назва")

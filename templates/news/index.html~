@@ -1,0 +1,15 @@
+{% extends 'base/base.html'%}
+{% load staticfiles %}
+
+{% block content %}
+<h1 id="header" align="center">{% block header %}Мастера студии{% endblock %}</h1>
+	<table style="margin-left:25%;">
+	{% for news in news_list %}
+		<tr><td style="padding-bottom:20px;">
+			<img src="{% static news.avatar.url %}" height=100 style="padding-right:40px">
+		</td><td style="padding-bottom:20px;">
+			<a href="{% url 'news:detail' news.id%}" >{{ news.name }}</a>
+		</td></tr>
+	{%endfor%}
+	</table>
+{%endblock%}

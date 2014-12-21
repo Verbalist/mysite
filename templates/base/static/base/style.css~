@@ -1,0 +1,16 @@
+a {
+	color:green;
+	font-size:15pt;
+}
+h1 {
+	font-family:Lato-HeavyItalic;
+	color:white;
+}
+body {
+	background:#58FAF4;
+}
+#header {
+	font-family:Lato-LightItalic;
+	font-size:40pt;
+	margin-top:0px
+}
